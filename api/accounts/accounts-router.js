@@ -17,7 +17,7 @@ router.get('/:id',
     const account = await Account.getById(req.params.id)
     res.json(account)
   } catch (err) {
-    next(err)
+    next({status: 404, message: 'account not found'})
   }
 });
 
