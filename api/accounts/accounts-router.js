@@ -1,6 +1,6 @@
-const router = require('express').Router()
-const mid = require('./accounts-middleware')
-const Account = require('./accounts-model')
+const router = require('express').Router();
+const mid = require('./accounts-middleware');
+const Account = require('./accounts-model');
 
 router.get('/', async (req, res, next) => {
   try {
@@ -9,7 +9,7 @@ router.get('/', async (req, res, next) => {
   } catch (err) {
     next(err)
   }
-})
+});
 
 router.get('/:id', 
   mid.checkAccountId, async (req, res, next) => {
@@ -19,7 +19,7 @@ router.get('/:id',
   } catch (err) {
     next(err)
   }
-})
+});
 
 router.post(
   '/', 
@@ -35,7 +35,7 @@ router.post(
     } catch (err) {
       next(err)
   }
-})
+});
 
 router.put(
   '/:id', 
@@ -49,7 +49,7 @@ router.put(
   } catch (err) {
     next(err)
   }
-})
+});
 
 router.delete('/:id', 
   mid.checkAccountId, async (req, res, next) => {
@@ -59,12 +59,12 @@ router.delete('/:id',
   } catch (err) {
     next(err)
   }
-})
+});
 
 router.use((err, req, res, next) => { // eslint-disable-line
   res.status(err.status || 500).json({
     message: err.message,
   })
-})
+});
 
 module.exports = router;

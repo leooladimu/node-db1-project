@@ -5,7 +5,7 @@ const getAll = () => {
 }
 
 const getById = id => {
-  return db('users')
+  return db('accounts')
     .where({ id })
     .first();
 }
